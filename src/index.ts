@@ -37,10 +37,10 @@ const generatorContract = (privateKey) => {
     })
 }
 
-const startGenerator = async (num:number, privateKey: string )=>{
-    for(let i = 0 ; i < num ; i ++){
-        await generatorContract(privateKey)
+const startGenerator = async (privateKeys: string[])=>{
+    for(let i = 0 ; i < privateKeys.length; i ++){
+        await generatorContract(privateKeys[i])
     }
 }   
 
-startGenerator(1,"输入你的私钥") //第一个是创建数量第二个是你的私钥
+startGenerator(["0x","0x","0x"]) //0x全部替换成你的私钥，有多少个天多少个，英文逗号隔开，记得要加双引号
