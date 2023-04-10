@@ -20,7 +20,8 @@ const generatorContract = (privateKey) => {
             })
         } catch (error) {
             console.log(`合约创建是失败，失败原因${error.message}`)
-            resolve(false) 
+            resolve(false)
+            return
         }
         let signTx = await web3.eth.accounts.signTransaction({
             from: account.address,
@@ -39,10 +40,10 @@ const generatorContract = (privateKey) => {
     })
 }
 
-const startGenerator = async (privateKeys: string[])=>{
-    for(let i = 0 ; i < privateKeys.length; i ++){
+const startGenerator = async (privateKeys: string[]) => {
+    for (let i = 0; i < privateKeys.length; i++) {
         await generatorContract(privateKeys[i])
     }
-}   
+}
 
-startGenerator(["0x","0x","0x"]) //0x全部替换成你的私钥，有多少个天多少个，英文逗号隔开，记得要加双引号
+startGenerator(["0x", "0x", "0x"]) //0x全部替换成你的私钥，有多少个天多少个，英文逗号隔开，记得要加双引号
