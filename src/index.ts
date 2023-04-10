@@ -19,6 +19,8 @@ const generatorContract = (privateKey) => {
                 data: encodeData
             })
         } catch (error) {
+            console.log(`合约创建是失败，失败原因${error.message}`)
+            resolve(false) 
         }
         let signTx = await web3.eth.accounts.signTransaction({
             from: account.address,
